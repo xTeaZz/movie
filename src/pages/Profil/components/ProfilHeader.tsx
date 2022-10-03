@@ -1,8 +1,8 @@
-import "../Porfil.scss"
+import "../Profil.scss"
 
 function ProfilHeader() {
   return (
-    <div>
+    <div className="profil-header">
       <h1>Movie recommendation</h1>
     </div>
   )
