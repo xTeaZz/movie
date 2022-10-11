@@ -2,9 +2,9 @@ import "../Home.scss"
 import { Button } from "@mui/material"
 import { Link } from "react-router-dom"
 
-function HomeHeader() {
+export default function HomeHeader() {
   return (
-    <div>
+    <div className="home-header">
       <h1>Movie recommendation</h1>
       <Link to='/profil'>
         <Button variant="outlined" size="small">Profil</Button>
@@ -12,5 +12,3 @@ function HomeHeader() {
     </div>
   )
 }
-
-export default HomeHeader

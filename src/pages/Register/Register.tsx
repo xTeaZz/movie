@@ -1,11 +1,11 @@
+import LoginHeader from "../Login/components/LoginHeader"
 import RegisterForm from "./components/RegisterForm"
 
-function Register() {
+export default function Register() {
   return (
     <div>
+      <LoginHeader />
       <RegisterForm />
     </div>
   )
 }
-
-export default Register

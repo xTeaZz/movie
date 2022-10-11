@@ -1,7 +1,7 @@
 import Footer from "../../components/Footer/Footer"
 import ProfilHeader from "./components/ProfilHeader"
 
-function Profil() {
+export default function Profil() {
   return (
     <div>
       <ProfilHeader />
@@ -9,5 +9,3 @@ function Profil() {
     </div>
   )
 }
-
-export default Profil

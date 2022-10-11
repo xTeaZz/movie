@@ -5,7 +5,7 @@ import Login from "./pages/Login/Login"
 import Profil from "./pages/Profil/Profil"
 import Register from "./pages/Register/Register"
 
-function App() {
+export default function App() {
   return (
     <div className='App'>
       <Routes>
@@ -17,5 +17,3 @@ function App() {
     </div>
   )
 }
-
-export default App

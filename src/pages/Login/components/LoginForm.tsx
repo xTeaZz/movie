@@ -1,9 +1,9 @@
 import { Button, TextField } from "@mui/material"
-import axios from "axios"
 import { FormEvent, useState } from "react"
-import ".././Register.scss"
+import { Link } from "react-router-dom"
+import "../Login.scss"
 
-export default function RegisterForm() {
+export default function LoginForm() {
   const [values, setValues] = useState({
     email: "",
     password: "",
@@ -17,19 +17,15 @@ export default function RegisterForm() {
     })
   }
 
-  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
+  function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault()
-    try {
-      const { data } = await axios.post("localhost:3000/register", {
-        ...values,
-      })
-    } catch (error) {}
   }
 
   return (
-    <div>
+    <div className=''>
+      <h1 className='login-text'>Login</h1>
       <form
-        className='register-form'
+        className='login-form'
         onSubmit={(e) => {
           handleSubmit(e)
         }}
@@ -52,9 +48,14 @@ export default function RegisterForm() {
           autoComplete='current-password'
           onChange={handleChange}
         />
-        <Button variant='contained' color='success' name='submit' type='submit'>
-          Submit
-        </Button>
+        <div className='login-button'>
+          <Button variant='contained' name='submit' type='submit'>
+            Sign in
+          </Button>
+          <Link to='/register'>
+            <Button variant='contained'>Sign up</Button>
+          </Link>
+        </div>
       </form>
     </div>
   )

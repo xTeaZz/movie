@@ -1,23 +1,16 @@
-import "./components/LoginButton"
-import LoginButton from "./components/LoginButton"
-import "./components/LoginTextField"
-import LoginTextField from "./components/LoginTextField"
-import "./Login.scss"
-import Footer from '../../components/Footer/Footer'
+import Footer from "../../components/Footer/Footer"
+import LoginForm from "./components/LoginForm"
 import LoginHeader from "./components/LoginHeader"
-import axios from "axios"
+import "./Login.scss"
 
-function Login() {
+export default function Login() {
   return (
-    <div className="login">
+    <div className='login'>
       <LoginHeader />
       <div className='login-form'>
-        <LoginTextField />
-        <LoginButton />
+        <LoginForm />
       </div>
       <Footer />
     </div>
   )
 }
-
-export default Login
