@@ -20,9 +20,18 @@ export default function RegisterForm() {
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault()
     try {
-      const { data } = await axios.post("localhost:3000/register", {
-        ...values,
-      })
+      const { data } = await axios.post(
+        "http://localhost:3000/register",
+        {
+          ...values,
+        },
+        { withCredentials: true }
+      )
+      console.log(data)
+      if (data) {
+        if (data.errors) {
+        }
+      }
     } catch (error) {}
   }
 
