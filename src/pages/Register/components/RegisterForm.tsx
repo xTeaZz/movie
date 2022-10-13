@@ -21,7 +21,7 @@ export default function RegisterForm() {
     e.preventDefault()
     try {
       const { data } = await axios.post(
-        "http://localhost:3000/register",
+        "http://localhost:4000/register",
         {
           ...values,
         },
