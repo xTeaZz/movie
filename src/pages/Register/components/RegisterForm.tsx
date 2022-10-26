@@ -9,6 +9,8 @@ export default function RegisterForm() {
     password: "",
   })
 
+  const generateError = (err) =>
+
   function handleChange(e: { target: { value: any; name: any } }) {
     const value = e.target.value
     setValues({

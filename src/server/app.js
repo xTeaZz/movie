@@ -8,11 +8,11 @@ const app = express()
 
 app.listen(4000, (err) => {
   if (err) {
-    console.log(err);
+    console.log(err)
   } else {
-    console.log("Server Started Successfully.");
+    console.log("Server Started Successfully.")
   }
-});
+})
 
 mongoose
   .connect(
@@ -32,7 +32,7 @@ mongoose
 app.use(
   cors({
     origin: "http://localhost:3000",
-    method: ["GET","POST"],
+    method: ["GET", "POST"],
     credentials: true,
   })
 )
