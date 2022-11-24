@@ -1,9 +1,26 @@
 import { Button, TextField } from "@mui/material"
-import { FormEvent, useState } from "react"
-import { Link } from "react-router-dom"
+import axios from "axios"
+import { FormEvent, useEffect, useState } from "react"
+import { useCookies } from "react-cookie"
+import { Link, useNavigate } from "react-router-dom"
+import { ToastContainer,toast } from "react-toastify"
 import "../Login.scss"
 
 export default function LoginForm() {
+  const [cookies] = useCookies(["jwt"])
+  const navigate = useNavigate()
+  useEffect(() => {
+    if (cookies.jwt) {
+      navigate("/")
+    }
+  }, [cookies, navigate])
+
+  function generateError(error: any) {
+    toast.error(error, {
+      position: "bottom-right",
+    });
+  }
+
   const [values, setValues] = useState({
     email: "",
     password: "",
@@ -17,8 +34,28 @@ export default function LoginForm() {
     })
   }
 
-  function handleSubmit(e: FormEvent<HTMLFormElement>) {
+  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault()
+    try {
+      const { data } = await axios.post(
+        "http://localhost:4000/login",
+        {
+          ...values,
+        },
+        { withCredentials: true }
+      )
+      if (data) {
+        if (data.errors) {
+          const { email, password } = data.errors
+          if (email) generateError(email)
+          else if (password) generateError(password)
+        }else {
+          navigate("/");
+        }
+      }
+    } catch (ex) {
+      console.log(ex)
+    }
   }
 
   return (
@@ -57,6 +94,9 @@ export default function LoginForm() {
           </Link>
         </div>
       </form>
+      <ToastContainer />
     </div>
   )
 }
+
+
