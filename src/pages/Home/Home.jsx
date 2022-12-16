@@ -6,6 +6,8 @@ import { toast, ToastContainer } from "react-toastify"
 import Footer from "../../components/Footer/Footer"
 import HomeHeader from "./components/HomeHeader"
 import MovieCard from "./components/MovieCard"
+import Searchbar from "./components/SearchBar"
+import "./Home.scss"
 
 export default function Home() {
   const navigate = useNavigate()
@@ -44,16 +46,7 @@ export default function Home() {
   const API_SEARCH =
     "https://api.themoviedb.org/3/search/movie?api_key=baeafd45f28580e3ebf5629d132668db"
 
-  const [movies, setMovies] = useState<
-      {
-        title: string
-        poster_path: string
-        vote_average: number
-        release_date: string
-        overview: string
-        id: any
-      }
-  []>([])
+  const [movies, setMovies] = useState([])
 
   const [query, setQuery] = useState("")
 
@@ -66,7 +59,7 @@ export default function Home() {
       })
   }, [])
 
-  const searchMovie = async (e: { preventDefault: () => void }) => {
+  const searchMovie = async (e) => {
     e.preventDefault()
     console.log("Searching")
     try {
@@ -84,13 +77,11 @@ export default function Home() {
     <>
       <div>
         <HomeHeader />
-        <div className='container'>
-          <div className='grid'>
-            :
-            {movies.map((movieReq) => (
-              <MovieCard key={movieReq["id"]} {...movieReq} />
-            ))}
-          </div>
+        <Searchbar />
+        <div className='grid'>
+          {movies.map((movieReq) => (
+            <MovieCard key={movieReq["id"]} {...movieReq} />
+          ))}
         </div>
         <Footer />
       </div>
